@@ -285,7 +285,7 @@ function renderCharacterList() {
     card.className = "char-card";
     card.innerHTML = `
       <div class="row">
-        <span class="avatar" style="background:${character.avatar.clothesColor}">${character.displayName.slice(0, 1)}</span>
+        ${renderFaceIcon(character)}
         <strong>${character.displayName}</strong>
       </div>
       <p>現在地: ${character.currentLocation}</p>
@@ -318,7 +318,7 @@ function renderDetail() {
   document.getElementById("detailPanel").innerHTML = `
     <article class="detail-card">
       <div class="row">
-        <span class="avatar" style="background:${character.avatar.clothesColor}">${character.displayName.slice(0, 1)}</span>
+        ${renderFaceIcon(character)}
         <h3>${character.displayName}</h3>
       </div>
       <p>現在地: ${character.currentLocation}</p>
@@ -414,4 +414,30 @@ function clampNum(value) {
 
 function rand(min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+function renderFaceIcon(character) {
+  const eyesClass = `eyes-${character.avatar.eyes || "round2"}`;
+  const mouthClass = `mouth-${character.avatar.mouth || "smile1"}`;
+  const faceClass = `face-${character.avatar.face || "round"}`;
+  const hairClass = `hair-${character.avatar.hair || "short1"}`;
+
+  return `
+    <span
+      class="face-icon ${eyesClass} ${mouthClass} ${faceClass} ${hairClass}"
+      style="
+        --hair-color:${character.avatar.hairColor};
+        --skin-color:${character.avatar.skinColor};
+        --clothes-color:${character.avatar.clothesColor};
+      "
+      aria-label="${character.displayName}の顔アイコン"
+    >
+      <span class="hair"></span>
+      <span class="face-base">
+        <span class="eyes"></span>
+        <span class="mouth"></span>
+      </span>
+      <span class="clothes"></span>
+    </span>
+  `;
 }
