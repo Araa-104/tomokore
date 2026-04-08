@@ -1,0 +1,83 @@
+:root {
+  color-scheme: light;
+  font-family: "Hiragino Kaku Gothic ProN", "Yu Gothic", sans-serif;
+  --bg: #f7f7fb;
+  --card: #ffffff;
+  --accent: #5168ff;
+  --text: #222;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+}
+.app-header {
+  padding: 14px;
+  background: var(--card);
+  border-bottom: 1px solid #ddd;
+}
+.app-header h1 { margin: 0 0 4px; font-size: 1.05rem; }
+#timeLabel { margin: 0; font-size: 0.9rem; color: #555; }
+.tab-nav {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+  padding: 10px;
+  position: sticky;
+  top: 0;
+  background: var(--bg);
+}
+button {
+  border: 0;
+  border-radius: 10px;
+  padding: 12px;
+  background: #e7e9ff;
+  font-weight: 600;
+}
+button.active { background: var(--accent); color: #fff; }
+button.danger { background: #ffd9d9; color: #8f0000; }
+main { padding: 12px; max-width: 900px; margin: 0 auto; }
+.screen { display: none; }
+.screen.active { display: block; }
+.map-grid {
+  display: grid;
+  gap: 10px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+.location-card,
+.char-card,
+.detail-card,
+.event-summary {
+  background: var(--card);
+  border-radius: 12px;
+  padding: 12px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+}
+.subtext { color: #5a5a5a; }
+.card-list { display: grid; gap: 10px; }
+.stack { display: grid; gap: 10px; }
+label, fieldset { display: grid; gap: 6px; }
+fieldset { border: 1px solid #ddd; border-radius: 8px; padding: 10px; }
+input, select {
+  width: 100%;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 10px;
+}
+.avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 999px;
+  display: inline-grid;
+  place-items: center;
+  color: #fff;
+  font-size: 0.8rem;
+  margin-right: 6px;
+}
+.row { display: flex; align-items: center; flex-wrap: wrap; gap: 6px; }
+.badge { background: #eef1ff; border-radius: 999px; padding: 4px 8px; font-size: 0.78rem; }
+@media (min-width: 800px) {
+  .map-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .card-list { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
