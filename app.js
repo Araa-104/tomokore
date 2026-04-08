@@ -254,7 +254,10 @@ function renderMap() {
       <div class="row">${residents
         .map(
           (character) =>
-            `<span class="badge" data-char-id="${character.id}" role="button">${character.displayName}</span>`
+            `<button class="resident-chip" data-char-id="${character.id}">
+              ${renderFaceIcon(character)}
+              <span>${character.displayName}</span>
+            </button>`
         )
         .join("") || "<small>誰もいません</small>"}</div>
       <p>${locationEvents.length ? `💡 ${locationEvents[0].text}` : "特にイベントなし"}</p>
