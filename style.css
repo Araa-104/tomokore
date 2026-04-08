@@ -1,0 +1,216 @@
+:root {
+  color-scheme: light;
+  font-family: "Hiragino Kaku Gothic ProN", "Yu Gothic", sans-serif;
+  --bg: #f7f7fb;
+  --card: #ffffff;
+  --accent: #5168ff;
+  --text: #222;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+}
+.app-header {
+  padding: 14px;
+  background: var(--card);
+  border-bottom: 1px solid #ddd;
+}
+.app-header h1 { margin: 0 0 4px; font-size: 1.05rem; }
+#timeLabel { margin: 0; font-size: 0.9rem; color: #555; }
+.tab-nav {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+  padding: 10px;
+  position: sticky;
+  top: 0;
+  background: var(--bg);
+}
+button {
+  border: 0;
+  border-radius: 10px;
+  padding: 12px;
+  background: #e7e9ff;
+  font-weight: 600;
+}
+button.active { background: var(--accent); color: #fff; }
+button.danger { background: #ffd9d9; color: #8f0000; }
+main { padding: 12px; max-width: 900px; margin: 0 auto; }
+.screen { display: none; }
+.screen.active { display: block; }
+.map-grid {
+  display: grid;
+  gap: 10px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+.location-card,
+.char-card,
+.detail-card,
+.event-summary {
+  background: var(--card);
+  border-radius: 12px;
+  padding: 12px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+}
+.subtext { color: #5a5a5a; }
+.card-list { display: grid; gap: 10px; }
+.stack { display: grid; gap: 10px; }
+label, fieldset { display: grid; gap: 6px; }
+fieldset { border: 1px solid #ddd; border-radius: 8px; padding: 10px; }
+input, select {
+  width: 100%;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 10px;
+}
+.face-icon {
+  --hair-color: #333333;
+  --skin-color: #f1c7a2;
+  --clothes-color: #88aaff;
+  width: 46px;
+  height: 54px;
+  position: relative;
+  display: inline-block;
+  margin-right: 6px;
+}
+.face-icon .hair {
+  position: absolute;
+  inset: 0 auto auto 50%;
+  width: 38px;
+  height: 24px;
+  transform: translateX(-50%);
+  background: var(--hair-color);
+  border-radius: 16px 16px 8px 8px;
+  z-index: 2;
+}
+.face-icon .face-base {
+  position: absolute;
+  left: 50%;
+  top: 10px;
+  transform: translateX(-50%);
+  width: 30px;
+  height: 30px;
+  background: var(--skin-color);
+  border-radius: 50%;
+  z-index: 3;
+}
+.face-icon .clothes {
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  transform: translateX(-50%);
+  width: 34px;
+  height: 18px;
+  background: var(--clothes-color);
+  border-radius: 10px 10px 4px 4px;
+}
+.face-icon .eyes::before,
+.face-icon .eyes::after {
+  content: "";
+  position: absolute;
+  top: 11px;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: #1e1e1e;
+}
+.face-icon .eyes::before { left: 8px; }
+.face-icon .eyes::after { right: 8px; }
+.face-icon .mouth {
+  position: absolute;
+  left: 50%;
+  bottom: 7px;
+  transform: translateX(-50%);
+  width: 10px;
+  height: 5px;
+  border-bottom: 2px solid #5e2c2c;
+  border-radius: 0 0 10px 10px;
+}
+
+.face-icon.eyes-line1 .eyes::before,
+.face-icon.eyes-line1 .eyes::after {
+  height: 2px;
+  border-radius: 2px;
+}
+.face-icon.eyes-sharp1 .eyes::before,
+.face-icon.eyes-sharp1 .eyes::after {
+  width: 5px;
+  height: 3px;
+  border-radius: 0;
+}
+
+.face-icon.mouth-flat1 .mouth {
+  width: 11px;
+  height: 0;
+  border-bottom-width: 2px;
+  border-radius: 0;
+}
+.face-icon.mouth-open1 .mouth {
+  width: 8px;
+  height: 6px;
+  border: 2px solid #5e2c2c;
+  border-radius: 8px;
+  border-top-width: 1px;
+}
+
+.face-icon.face-oval .face-base {
+  border-radius: 45% 45% 50% 50%;
+}
+
+.face-icon.hair-bob1 .hair {
+  width: 40px;
+  height: 26px;
+  border-radius: 14px;
+}
+.face-icon.hair-long1 .hair {
+  width: 40px;
+  height: 32px;
+  border-radius: 16px 16px 12px 12px;
+}
+.row { display: flex; align-items: center; flex-wrap: wrap; gap: 6px; }
+.badge { background: #eef1ff; border-radius: 999px; padding: 4px 8px; font-size: 0.78rem; }
+.resident-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  border-radius: 999px;
+  background: #eef1ff;
+  padding: 4px 8px 4px 4px;
+  font-size: 0.78rem;
+}
+.resident-chip .face-icon {
+  width: 30px;
+  height: 34px;
+  margin-right: 0;
+}
+.resident-chip .face-icon .hair {
+  width: 24px;
+  height: 16px;
+}
+.resident-chip .face-icon .face-base {
+  top: 7px;
+  width: 20px;
+  height: 20px;
+}
+.resident-chip .face-icon .eyes::before,
+.resident-chip .face-icon .eyes::after {
+  top: 7px;
+  width: 3px;
+  height: 3px;
+}
+.resident-chip .face-icon .eyes::before { left: 5px; }
+.resident-chip .face-icon .eyes::after { right: 5px; }
+.resident-chip .face-icon .mouth {
+  bottom: 4px;
+  width: 7px;
+}
+.resident-chip .face-icon .clothes {
+  width: 22px;
+  height: 10px;
+}
+@media (min-width: 800px) {
+  .map-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .card-list { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
